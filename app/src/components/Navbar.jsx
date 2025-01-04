@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -7,22 +7,43 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 
 function Navbar({ darkMode, toggleDarkMode }) {
+  const [adminDropdown, setAdminDropdown] = useState(false);
+
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setAdminDropdown(!adminDropdown);
+  };
+
+  // Close dropdown when clicking outside
+  const closeDropdown = () => {
+    setAdminDropdown(false);
+  };
+
   return (
     <nav className="navbar">
+      {/* Left Section */}
       <div className="nav-left">
         <Link to="/">Home</Link>
         <Link to="/dashboard">Dashboard</Link>
-        <Link to="/create-article">Create Article</Link>
-        <Link to="/edit-article">Edit Article</Link>
-        <Link to="/article-details">Article Details</Link>
-        <Link to="/version-history">Version History</Link>
-        <Link to="/permissions">Permissions</Link>
-        <Link to="/roles">Role Management</Link>
-        <Link to="/analytics">Analytics</Link>
-        <Link to="/export">Export</Link>
-        <Link to="/tags-categories">Tags/Categories</Link>
-        <Link to="/profile">Profile</Link>
+        <Link to="/my-articles">My Articles</Link>
+
+        {/* Admin Dropdown */}
+        <div className="admin-dropdown" onMouseLeave={closeDropdown}>
+          <button className="dropdown-toggle" onClick={toggleDropdown}>
+            Admin ▼
+          </button>
+          {adminDropdown && (
+            <div className="dropdown-menu">
+              <Link to="/tags-categories" onClick={closeDropdown}>Tags/Categories</Link>
+              <Link to="/analytics" onClick={closeDropdown}>Analytics</Link>
+              <Link to="/roles" onClick={closeDropdown}>Role Management</Link>
+              <Link to="/permissions" onClick={closeDropdown}>Permissions</Link>
+            </div>
+          )}
+        </div>
       </div>
+
+      {/* Right Section */}
       <div className="nav-right">
         <Link to="/login">Login</Link>
         <Link to="/register">Register</Link>

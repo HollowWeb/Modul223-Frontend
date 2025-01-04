@@ -3,14 +3,11 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import CreateArticle from './pages/CreateArticle';
-import EditArticle from './pages/EditArticle';
-import ArticleDetails from './pages/ArticleDetails';
-import VersionHistory from './pages/VersionHistory';
+import MyArticles from './pages/MyArticles';
+import ViewArticle from './pages/ViewArticle';
 import Permissions from './pages/Permissions';
 import Roles from './pages/Roles';
 import Analytics from './pages/Analytics';
-import Export from './pages/Export';
 import TagsCategories from './pages/TagsCategories';
 import Profile from './pages/Profile';
 import UnderDevelopment from './pages/UnderDevelopment';
@@ -42,14 +39,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/create-article" element={<CreateArticle />} />
-          <Route path="/edit-article" element={<EditArticle />} />
-          <Route path="/article-details" element={<ArticleDetails />} />
-          <Route path="/version-history" element={<VersionHistory />} />
+          <Route path="/my-articles" element={<MyArticles />} />
+          <Route path="/view-article" element={<ViewArticle />} />
           <Route path="/permissions" element={<Permissions />} />
           <Route path="/roles" element={<Roles />} />
           <Route path="/analytics" element={<Analytics />} />
-          <Route path="/export" element={<Export />} />
           <Route path="/tags-categories" element={<TagsCategories />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<UnderDevelopment />} />
