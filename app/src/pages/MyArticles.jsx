@@ -65,11 +65,20 @@ function MyArticles() {
     <div className="my-articles-container">
       <header className="header">
         <h1>My Articles</h1>
-        <p>Manage your articles efficiently and beautifully.</p>
+        <p>Select an already existing Article or create a new one.</p>
         <button className="btn-create" onClick={handleOpenModal}>
           + Create New Article
         </button>
       </header>
+  
+      {/* Placeholder for the list of all articles */}
+      <section className="all-articles-section">
+        <h2>All Articles</h2>
+        <div className="all-articles-placeholder">
+          <p>This section will display a list of all articles in the future also when logged in correctly.</p>
+        </div>
+      </section>
+  
       <div className="articles-grid">
         {articles.map((article) => (
           <div className="article-card" key={article.id}>
@@ -94,7 +103,7 @@ function MyArticles() {
           </div>
         ))}
       </div>
-
+  
       {showModal && (
         <div className="modal">
           <div className="modal-content">
@@ -133,6 +142,7 @@ function MyArticles() {
       )}
     </div>
   );
+  
 }
 
 export default MyArticles;

@@ -5,6 +5,10 @@ body {
   padding: 0;
 }
 
+.my-articles-container h1{
+  color: #555;
+}
+
 .my-articles-container {
   max-width: 1200px;
   margin: 2rem auto;
@@ -142,4 +146,32 @@ body {
 
 .btn-cancel:hover {
   background: #c82333;
+}
+
+/* Section for all articles */
+.all-articles-section {
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.all-articles-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.all-articles-placeholder {
+  padding: 1rem;
+  background-color: #ffffff;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.all-articles-placeholder p {
+  color: #666;
+  font-size: 1rem;
 }
