@@ -1,83 +1,165 @@
 /* General Navbar Styling */
 .navbar {
-    display: flex;
-    justify-content: space-between; /* Space between left and right sections */
-    align-items: center; /* Vertically center items */
-    padding: 1rem 2rem; /* Add padding for breathing space */
-    background-color: #f4f4f4;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  justify-content: space-between; /* Space between left and right sections */
+  align-items: center; /* Vertically align items */
+  padding: 1rem 2rem; /* Add padding */
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark Mode Navbar */
+body.dark-mode .navbar {
+  background-color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Navbar Links */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* Add spacing between links */
+}
+
+.nav-left a,
+.nav-right a {
+  text-decoration: none;
+  color: #333; /* Default text color */
+  font-weight: 600; /* Make links bolder */
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+/* Dark Mode Links */
+body.dark-mode .nav-left a,
+body.dark-mode .nav-right a {
+  color: #ffffff; /* White text in dark mode */
+}
+
+/* Hover Effects for Links */
+.nav-left a:hover,
+.nav-right a:hover {
+  color: #007BFF; /* Highlight color */
+  transform: scale(1.1); /* Slight scale-up effect */
+}
+
+body.dark-mode .nav-left a:hover,
+body.dark-mode .nav-right a:hover {
+  color: #90CAF9; /* Light blue highlight in dark mode */
+}
+
+/* Admin Dropdown */
+.admin-dropdown {
+  position: relative;
+}
+
+/* Dropdown Toggle Button */
+.dropdown-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem;
+  color: #333; /* Default text color */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+/* Dark Mode Dropdown Toggle */
+body.dark-mode .dropdown-toggle {
+  color: #ffffff; /* White text in dark mode */
+}
+
+/* Hover Effect for Dropdown Toggle */
+.dropdown-toggle:hover {
+  color: #007BFF; /* Highlight color */
+  transform: scale(1.1); /* Scale up slightly */
+}
+
+/* Dark Mode Hover Effect */
+body.dark-mode .dropdown-toggle:hover {
+  color: #90CAF9; /* Light blue in dark mode */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #f4f4f4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+  min-width: 150px;
+  transition: all 0.3s ease;
+}
+
+/* Dropdown Menu Links */
+.dropdown-menu a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333; /* Default text color */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover Effect for Dropdown Menu Links */
+.dropdown-menu a:hover {
+  background-color: #007BFF; /* Highlight background */
+  color: white; /* White text */
+}
+
+/* Dark Mode Dropdown Menu */
+body.dark-mode .dropdown-menu {
+  background: #333;
+}
+
+/* Dark Mode Dropdown Menu Links */
+body.dark-mode .dropdown-menu a {
+  color: #ffffff; /* White text in dark mode */
+}
+
+/* Dark Mode Dropdown Hover */
+body.dark-mode .dropdown-menu a:hover {
+  background-color: #007BFF; /* Highlight background */
+  color: #ffffff; /* White text */
+}
+
+/* Right Section of Navbar */
+.nav-right {
+  display: flex;
+  align-items: center; /* Vertically align items */
+  gap: 1rem; /* Add spacing between elements */
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Stack vertically */
+    align-items: flex-start;
   }
-  
-  /* Dark Mode Navbar */
-  body.dark-mode .navbar {
-    background-color: #333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
-  }
-  
-  /* Left Section of Navbar */
-  .nav-left {
-    display: flex; /* Flex layout for horizontal alignment */
-    gap: 1rem; /* Space between links */
-  }
-  
-  /* Right Section of Navbar */
+
   .nav-right {
-    display: flex; /* Flex layout for horizontal alignment */
-    align-items: center; /* Vertically align items */
-    gap: 1rem; /* Add spacing between elements */
+    margin-top: 0.5rem;
   }
-  
-  /* Navbar Links */
-  .nav-left a,
-  .nav-right a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600; /* Bolder text for links */
-    font-size: 1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
+
+  .nav-left {
+    flex-direction: column; /* Stack links vertically */
+    gap: 1rem;
   }
-  
-  body.dark-mode .nav-left a,
-  body.dark-mode .nav-right a {
-    color: #ffffff;
-  }
-  
-  /* Hover Effect for Links */
-  .nav-left a:hover,
-  .nav-right a:hover {
-    color: #007BFF;
-    transform: scale(1.1); /* Scale-up effect on hover */
-  }
-  
-  /* Dark Mode Hover Effect */
-  body.dark-mode .nav-left a:hover,
-  body.dark-mode .nav-right a:hover {
-    color: #90CAF9;
-  }
-  
-  /* Theme Toggle Button */
-  .theme-toggle {
-    padding: 0.3rem 0.8rem; /* Padding for better click area */
-    cursor: pointer;
-    background: none;
-    border: none;
-    font-size: 1.5rem; /* Icon size */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Mobile Responsive Navbar */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column; /* Stack navbar items vertically */
-      align-items: flex-start; /* Align to the left */
-    }
-  
-    .nav-right {
-      margin-top: 0.5rem; /* Add space between sections */
-    }
-  }
-  
+}

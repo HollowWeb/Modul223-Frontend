@@ -5,6 +5,22 @@ function Home() {
     <div>
       <h1>Welcome to wYZen</h1>
       <p>Collaborative Knowledge Management System</p>
+
+{/**De brüeder en svg hart am codiere. */}
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <rect width="500" height="200" fill="white" />
+
+
+  <text x="50%" y="50%" font-family="'Times New Roman', Times, serif" font-size="72" text-anchor="middle" fill="black">
+    w<tspan fill="#007bff">Y</tspan>Zen
+  </text>
+
+  <circle cx="170" cy="65" r="4" fill="red" />
+  <circle cx="190" cy="85" r="4" fill="blue" />
+  <circle cx="210" cy="65" r="4" fill="yellow" />
+</svg>
+
     </div>
   );
 }
