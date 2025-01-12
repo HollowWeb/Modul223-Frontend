@@ -70,11 +70,12 @@ function MyArticles() {
           + Create New Article
         </button>
       </header>
-      <ul className="articles-list">
+      <div className="articles-grid">
         {articles.map((article) => (
-          <li className="article-item" key={article.id}>
-            <div className="article-details">
+          <div className="article-card" key={article.id}>
+            <div className="article-content">
               <h2>{article.title}</h2>
+              <p>{article.content.substring(0, 100)}...</p>
             </div>
             <div className="article-actions">
               <button
@@ -90,9 +91,9 @@ function MyArticles() {
                 Version History
               </button>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
 
       {showModal && (
         <div className="modal">
