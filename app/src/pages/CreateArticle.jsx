@@ -1,3 +1,7 @@
+/**
+ * CreateArticle component for creating new articles.
+ * Provides expected features for the text editor, image uploads, and tag/category assignment.
+ */
 import React from 'react';
 
 function CreateArticle() {

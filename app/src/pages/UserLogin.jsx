@@ -1,3 +1,7 @@
+/**
+ * UserLogin component for handling user login.
+ * Provides a form for entering username and password and handles authentication with the backend.
+ */
 import React, { useState } from "react";
 import "../styles/loginStyle.css"; // Optional CSS for styling
 
@@ -9,6 +13,11 @@ function UserLogin() {
 
   const [message, setMessage] = useState("");
 
+  /**
+   * Handles input changes in the login form.
+   * Updates the state with the new form values.
+   * @param {Event} e - The change event from the input field.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -17,6 +26,11 @@ function UserLogin() {
     }));
   };
 
+    /**
+   * Handles the form submission for user login.
+   * Sends a POST request to the backend to authenticate the user.
+   * @param {Event} e - The submit event from the form.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Login form submitted:", formData);

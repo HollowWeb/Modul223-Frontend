@@ -1,3 +1,6 @@
+/**
+ * Component page which gets shown when access got denied.
+ */
 import React from "react";
 
 function Unauthorized() {

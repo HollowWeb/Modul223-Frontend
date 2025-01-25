@@ -1,6 +1,15 @@
+/**
+ * Component for viewing a single article.
+ * Displays article content and outlines expected features for the future.
+ */
 import React from 'react';
 
 function ViewArticle() {
+
+   /**
+   * Handles the export functionality for the article.
+   * Currently shows a placeholder alert for export options.
+   */
   const handleExport = () => {
     alert('Export options: PDF or HTML (To be implemented)');
   };

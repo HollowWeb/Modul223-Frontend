@@ -1,3 +1,7 @@
+/**
+ * Profile component for managing user account information.
+ * Allows users to view and update their username, email, and password.
+ */
 import React, { useState } from 'react';
 
 function Profile() {
@@ -7,6 +11,10 @@ function Profile() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+   /**
+   * Handles saving profile changes.
+   * Placeholder logic to demonstrate saving action.
+   */
   const handleSave = () => {
     // Placeholder logic for saving profile changes
     alert('Profile changes saved!');
