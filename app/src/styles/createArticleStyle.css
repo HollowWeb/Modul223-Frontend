@@ -1,0 +1,472 @@
+/* createArticleStyle.css */
+
+/* Modal - Primary Container */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 70%;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Modal Header */
+.modal-header {
+  background: #4a90e2;
+  color: white;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-close:hover {
+  transform: rotate(90deg);
+}
+
+/* Modal Body */
+.modal-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  overflow: hidden; /* Prevent overflow outside the modal */
+  box-sizing: border-box;
+}
+
+.modal-body.split-view {
+  flex-direction: row; /* Arrange edit and preview sections side by side */
+  gap: 16px;
+}
+
+.modal-body.split-view .edit-section,
+.modal-body.split-view .preview-section {
+  display: flex; /* Allow children to align properly */
+  flex-direction: column; /* Stack label and content */
+  flex: 1;
+  max-width: 50%; /* Each section gets half of the modal */
+  height: 100%; /* Full height of the modal body */
+  overflow: hidden; /* Prevent content overflow */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.modal-body.full-width .edit-section,
+.modal-body.full-width .preview-section {
+  flex: 1; /* Take up full available height */
+  width: 100%; /* Occupy full width */
+  height: 100%; /* Stretch to the full height of the modal body */
+  overflow-y: auto; /* Enable scrolling for overflowing content */
+  box-sizing: border-box; /* Include padding and borders in dimensions */
+  display: flex; /* Flex to stretch child elements */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.modal-body.full-width .preview-inner {
+  flex: 1; /* Allow inner container to stretch */
+  overflow-y: auto; /* Enable scrolling for overflowing preview content */
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Include padding and borders in dimensions */
+}
+
+/* Preview Controls */
+.preview-controls {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  margin-bottom: 16px;
+  padding: 15px;
+}
+
+.btn-preview {
+  background: #e0e0e0;
+  border: none;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-preview.active {
+  background: #4a90e2;
+  /* Blue for the active button */
+  color: #ffffff;
+}
+
+.btn-preview:not(.active):hover {
+  background: #cfd8dc;
+  /* Slight hover effect for inactive buttons */
+}
+
+/* Edit Section */
+.edit-section,
+.preview-section {
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #f7f7f7;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.edit-section {
+  display: flex;
+  flex-direction: column; /* Stack label and textarea vertically */
+  flex: 1; /* Allow the edit section to stretch */
+  height: 100%; /* Ensure the edit section fills its container */
+  box-sizing: border-box; /* Include padding and border in dimensions */
+}
+.edit-section label {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.edit-section input,
+.edit-section textarea {
+  width: 100%; /* Stretch input and textarea to fit container */
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 4px;
+}
+
+.edit-section textarea {
+  flex: 1; /* Make the textarea fill the remaining vertical space */
+  width: 100%; /* Stretch horizontally to match the container */
+  resize: none; /* Disable resizing to prevent breaking layout */
+  padding: 8px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding and borders are included in dimensions */
+}
+
+/* Preview Section */
+
+.preview-section .preview-inner {
+  flex: 1; /* Stretch to fill available space */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.preview-section h3 {
+  margin-bottom: 8px;
+  margin-top: 3px;
+  font-size: 1.2rem;
+}
+
+.preview-content {
+  font-family: "Courier New", monospace;
+  line-height: 1.5;
+  white-space: pre-wrap; /* Preserve line breaks */
+  word-wrap: break-word; /* Break long words */
+}
+
+/* Modal Footer */
+.modal-actions {
+  padding: 16px;
+  background: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #e0e0e0;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Buttons in Footer */
+.btn-save {
+  background: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-save:hover {
+  background: #45a049;
+}
+
+.btn-cancel {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-cancel:hover {
+  background: #e53935;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal {
+    width: 95%;
+  }
+
+  .split-view {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Dark Mode */
+.dark-mode .modal {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444444;
+}
+
+.dark-mode .modal-header {
+  background: #333333;
+  color: white;
+}
+
+.dark-mode .edit-section,
+.dark-mode .preview-section {
+  background: #2c2c2c;
+  border: 1px solid #555555;
+}
+
+.dark-mode .preview-content {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-mode .btn-save {
+  background: #4caf50;
+  color: white;
+}
+
+.dark-mode .btn-cancel {
+  background: #f44336;
+  color: white;
+}
+
+.dark-mode .btn-preview.active {
+  background: #666666;
+  color: white;
+}
+
+.dark-mode .btn-preview {
+  background: #444444;
+  color: #ffffff;
+}
+
+/* Modal Actions Styling */
+.dark-mode .modal-actions {
+  background: #2c2c2c; /* Darker background for footer */
+  border-top: 1px solid #444444; /* Slight border for separation */
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for elevation */
+}
+
+/* Textarea Styling */
+.dark-mode .edit-section textarea {
+  background: #1e1e1e; /* Match the dark background of the modal */
+  color: #ffffff; /* White text for readability */
+  border: 1px solid #444444; /* Subtle border to match dark theme */
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: none; /* Disable resizing */
+}
+
+/* Input Styling */
+.dark-mode .edit-section input {
+  background: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #444444;
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Preview Inner Styling */
+.dark-mode .preview-section .preview-inner {
+  background: #1e1e1e; /* Dark background to match modal */
+  color: #ffffff; /* White text for contrast */
+  border: 1px solid #444444; /* Subtle border */
+  padding: 16px;
+  border-radius: 4px;
+  overflow-y: auto; /* Allow scrolling for long content */
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5); /* Subtle inner shadow */
+}
+
+
+/* Headings */
+.preview-content h1 {
+  font-size: 2rem;
+  margin: 1rem 0 0.5rem 0; /* Consistent spacing above and below */
+  border-bottom: 2px solid #cccccc; /* Optional: underlined headings */
+  padding-bottom: 0.3rem;
+}
+
+.preview-content h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.preview-content h3 {
+  font-size: 1.25rem;
+  margin: 0.75rem 0 0.5rem 0;
+}
+
+/* Paragraphs */
+.preview-content p {
+  margin: 0.5rem 0; /* Reduce spacing between paragraphs */
+}
+
+/* Lists */
+.preview-content ul, 
+.preview-content ol {
+  margin: 0.2rem 0; /* Reduce excessive spacing above and below lists */
+  padding-left: 1.5rem; /* Indentation for readability */
+}
+
+.preview-content li {
+  margin: 0.25rem 0; /* Minimal spacing between list items */
+}
+
+/* Blockquotes */
+.preview-content blockquote {
+  border-left: 4px solid #cccccc;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  color: #666666; /* Muted color for quotes */
+  font-style: italic;
+}
+
+/* Code Blocks */
+.preview-content pre {
+  background: #2c2c2c; /* Match dark mode or adjust for light mode */
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto; /* Ensure horizontal scrolling for long lines */
+  margin: 0.5rem 0;
+}
+
+.preview-content code {
+  background: #f5f5f5; /* Light background for inline code */
+  color: #d14; /* Syntax highlighting color */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+}
+
+/* Horizontal Rules */
+.preview-content hr {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 1rem 0;
+}
+
+/* Links */
+.preview-content a {
+  color: #4a90e2; /* Blue for links */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.preview-content a:hover {
+  text-decoration: underline;
+}
+
+/* Images */
+.preview-content img {
+  max-width: 100%; /* Ensure images don’t overflow */
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+/* Tables */
+.preview-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.preview-content th,
+.preview-content td {
+  border: 1px solid #cccccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.preview-content th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Inline Styles for Strong and Emphasis */
+.preview-content strong {
+  font-weight: bold;
+}
+
+.preview-content em {
+  font-style: italic;
+}
+
+/* Adjust Markdown Containers */
+.preview-content > *:first-child {
+  margin-top: 0; /* Remove unnecessary margin for the first element */
+}
+
+.preview-content > *:last-child {
+  margin-bottom: 0; /* Remove unnecessary margin for the last element */
+}
