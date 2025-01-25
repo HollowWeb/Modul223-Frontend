@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import UnderDevelopment from './pages/UserLogin';
 import UserRegistration from './pages/UserRegistration';
 import { Routes, Route } from 'react-router-dom';
+import Unauthorized from './pages/Unauthorized';
 
 function App() {
   const [darkMode, setDarkMode] = useState(
@@ -47,6 +48,7 @@ function App() {
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/tags-categories" element={<TagsCategories />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/unauthorized" element={<Unauthorized/>} />
           <Route path="/login" element={<UnderDevelopment />} />
           <Route path="/register" element={<UserRegistration />} />
         </Routes>
