@@ -9,6 +9,8 @@ function UserRegistration() {
     password: "",
   });
 
+  const [message, setMessage] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -41,7 +43,6 @@ function UserRegistration() {
           
           // Save token to localStorage
           localStorage.setItem("jwtToken", token);
-          setMessage("Registration and login successful!");
   
           // Redirect user to dashboard or home page
           window.location.href = "/dashboard";
@@ -63,6 +64,9 @@ function UserRegistration() {
     <div className="registration-container">
       <h1>Create an Account</h1>
       <p>Register to access all features of our platform.</p>
+
+      {message && <p className="message">{message}</p>}
+
       <form className="registration-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email:</label>
         <input
