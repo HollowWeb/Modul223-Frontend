@@ -36,8 +36,8 @@ function Navbar({ darkMode, toggleDarkMode }) {
             <div className="dropdown-menu">
               <Link to="/tags-categories" onClick={closeDropdown}>Tags/Categories</Link>
               <Link to="/analytics" onClick={closeDropdown}>Analytics</Link>
-              <Link to="/roles" onClick={closeDropdown}>Role Management</Link>
-              <Link to="/permissions" onClick={closeDropdown}>Permissions</Link>
+              <Link to="/roles" onClick={closeDropdown}>Users</Link>
+              <Link to="/pending-articles" onClick={closeDropdown}>Pending Articles</Link>
             </div>
           )}
         </div>

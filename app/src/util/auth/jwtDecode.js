@@ -6,4 +6,5 @@ export const getRolesFromToken = () => {
   if (!token) return []; // If no token, return an empty array
   const decoded = jwtDecode(token); // Decode the JWT
   return decoded.roles || []; // Return roles or an empty array if roles are not present
+
 };

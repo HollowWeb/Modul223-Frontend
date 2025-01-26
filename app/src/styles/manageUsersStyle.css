@@ -1,0 +1,280 @@
+/* Main Container */
+.manage-users-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #ffffff; /* Light mode background */
+    color: #333333; /* Light mode text */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manage-users-container.dark-mode {
+    background: #1e1e1e; /* Dark mode background */
+    color: #e0e0e0; /* Dark mode text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Title */
+.manage-users-container h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.manage-users-container.dark-mode h1 {
+    color: #ffffff; /* Lighter text for dark mode */
+}
+
+/* Table */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.user-table th,
+.user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd; /* Light mode border */
+}
+
+.user-table th {
+    background: #f4f4f4; /* Light mode header background */
+    color: #333333; /* Light mode text */
+    font-weight: bold;
+}
+
+.user-table td {
+    background: #ffffff; /* Light mode cell background */
+    color: #333333; /* Light mode text */
+}
+
+.user-table tr:nth-child(even) td {
+    background: #f9f9f9; /* Light mode alternate row */
+}
+
+.user-table tr:hover td {
+    background: #f1f1f1; /* Light mode hover effect */
+    border-bottom: 1px solid #2196f3; /* Highlight row on hover */
+}
+
+/* Dark Mode Table */
+.manage-users-container.dark-mode .user-table th {
+    background: #333333; /* Dark mode header background */
+    color: #e0e0e0; /* Dark mode header text */
+}
+
+.manage-users-container.dark-mode .user-table td {
+    background: #2a2a2a; /* Dark mode cell background */
+    color: #cccccc; /* Dark mode cell text */
+}
+
+.manage-users-container.dark-mode .user-table tr:nth-child(even) td {
+    background: #242424; /* Dark mode alternate row */
+}
+
+.manage-users-container.dark-mode .user-table tr:hover td {
+    background: #3a3a3a; /* Dark mode hover effect */
+    border-bottom: 1px solid #1565c0; /* Highlight row on hover in dark mode */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .user-table th,
+    .user-table td {
+        font-size: 0.9rem; /* Slightly smaller text for smaller screens */
+    }
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* Manage Roles Button */
+.btn-manage-roles {
+    background-color: #2196f3;
+    color: white;
+}
+
+.btn-manage-roles:hover {
+    background-color: #1976d2;
+}
+
+.btn-manage-roles.dark-mode {
+    background-color: #0d47a1;
+}
+
+.btn-manage-roles.dark-mode:hover {
+    background-color: #1565c0;
+}
+
+/* Change Password Button */
+.btn-change-password {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-change-password:hover {
+    background: #45a049;
+}
+
+.btn-change-password.dark-mode {
+    background: #357a38;
+}
+
+.btn-change-password.dark-mode:hover {
+    background: #2e7031;
+}
+
+/* Delete User Button */
+.btn-delete-user {
+    background: #f44336;
+    color: white;
+}
+
+.btn-delete-user:hover {
+    background: #d32f2f;
+}
+
+.btn-delete-user.dark-mode {
+    background: #b71c1c;
+}
+
+.btn-delete-user.dark-mode:hover {
+    background: #c62828;
+}
+
+/* Change Password Modal */
+.change-password-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.change-password-modal.dark-mode {
+    background: #2a2a2a;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.change-password-modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.change-password-modal input {
+    width: 95%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.change-password-modal input.dark-mode {
+    background: #444444;
+    color: #ffffff;
+    border: 1px solid #666666;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.modal-actions button:first-child {
+    background: #4caf50;
+    color: white;
+}
+
+.modal-actions button:first-child:hover {
+    background: #45a049;
+}
+
+.modal-actions button:last-child {
+    background: #f44336;
+    color: white;
+}
+
+.modal-actions button:last-child:hover {
+    background: #e53935;
+}
+
+/* Manage Roles Modal */
+.manage-roles-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.manage-roles-modal.dark-mode {
+    background: #2a2a2a;
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.manage-roles-modal h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.roles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.roles-list label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.roles-list input[type="checkbox"] {
+    transform: scale(1.2);
+    cursor: pointer;
+}

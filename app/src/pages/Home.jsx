@@ -1,12 +1,20 @@
+/**
+ * Home component for the application.
+ * Serves as the landing page with a welcome message, description, and a custom SVG logo.
+ */
 import React from 'react';
 
 function Home() {
+
+  /**
+   * Chatgpt code for the creation of our logo on the landing page.
+   */
   return (
     <div>
       <h1>Welcome to wYZen</h1>
       <p>Collaborative Knowledge Management System</p>
 
-{/**De brüeder en svg hart am codiere. */}
+
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" xmlns:xlink="http://www.w3.org/1999/xlink">
 
   <rect width="500" height="200" fill="white" />

@@ -1,4 +1,7 @@
-
+/**
+ * UserRegistration component for handling user registration.
+ * Provides a form for users to enter their email, username, and password and handles account creation.
+ */
 import React, { useState } from "react"; 
 import "../styles/registerStyle.css";
 
@@ -11,6 +14,11 @@ function UserRegistration() {
 
   const [message, setMessage] = useState("");
 
+  /**
+   * Handles input changes in the registration form.
+   * Updates the formData state with the new values.
+   * @param {Event} e - The change event from the input field.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -19,6 +27,11 @@ function UserRegistration() {
     }));
   };
 
+    /**
+   * Handles the form submission for user registration.
+   * Sends the registration data to the backend and handles the response.
+   * @param {Event} e - The submit event from the form.
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submitted:", formData);

@@ -1,0 +1,124 @@
+/* Tag Management Container */
+.tag-management-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    color: #333333;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tag-management-container.dark-mode {
+    background: #1e1e1e;
+    color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Title */
+.tag-management-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Create Tag Section */
+.create-tag-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.create-tag-section input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.create-tag-section input.dark-mode {
+    background: #444444;
+    color: #ffffff;
+    border: 1px solid #666666;
+}
+
+.create-tag-section button {
+    padding: 10px 15px;
+    background: #4caf50;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-tag-section button:hover {
+    background: #45a049;
+}
+
+/* Tag Table */
+.tag-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.tag-table th,
+.tag-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.tag-table th {
+    background: #f4f4f4;
+    font-weight: bold;
+}
+
+.tag-table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.tag-table tr:hover {
+    background: #f1f1f1;
+}
+
+/* Dark Mode Table */
+.tag-management-container.dark-mode .tag-table th {
+    background: #333333;
+    color: #ffffff;
+}
+
+.tag-management-container.dark-mode .tag-table tr:nth-child(even) {
+    background: #242424;
+}
+
+.tag-management-container.dark-mode .tag-table tr:hover {
+    background: #3a3a3a;
+}
+
+/* Action Buttons */
+.tag-table button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tag-table button:first-child {
+    background: #2196f3;
+    color: white;
+}
+
+.tag-table button:first-child:hover {
+    background: #1976d2;
+}
+
+.tag-table button:last-child {
+    background: #f44336;
+    color: white;
+}
+
+.tag-table button:last-child:hover {
+    background: #d32f2f;
+}
