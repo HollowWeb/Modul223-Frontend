@@ -4,15 +4,19 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-    background: #ffffff; /* Light mode background */
-    color: #333333; /* Light mode text */
+    background: #ffffff;
+    /* Light mode background */
+    color: #333333;
+    /* Light mode text */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .manage-users-container.dark-mode {
-    background: #1e1e1e; /* Dark mode background */
-    color: #e0e0e0; /* Dark mode text */
+    background: #1e1e1e;
+    /* Dark mode background */
+    color: #e0e0e0;
+    /* Dark mode text */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -24,7 +28,8 @@
 }
 
 .manage-users-container.dark-mode h1 {
-    color: #ffffff; /* Lighter text for dark mode */
+    color: #ffffff;
+    /* Lighter text for dark mode */
 }
 
 /* Table */
@@ -40,54 +45,71 @@
 .user-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #ddd; /* Light mode border */
+    border-bottom: 1px solid #ddd;
+    /* Light mode border */
 }
 
 .user-table th {
-    background: #f4f4f4; /* Light mode header background */
-    color: #333333; /* Light mode text */
+    background: #f4f4f4;
+    /* Light mode header background */
+    color: #333333;
+    /* Light mode text */
     font-weight: bold;
 }
 
 .user-table td {
-    background: #ffffff; /* Light mode cell background */
-    color: #333333; /* Light mode text */
+    background: #ffffff;
+    /* Light mode cell background */
+    color: #333333;
+    /* Light mode text */
 }
 
 .user-table tr:nth-child(even) td {
-    background: #f9f9f9; /* Light mode alternate row */
+    background: #f9f9f9;
+    /* Light mode alternate row */
 }
 
 .user-table tr:hover td {
-    background: #f1f1f1; /* Light mode hover effect */
-    border-bottom: 1px solid #2196f3; /* Highlight row on hover */
+    background: #f1f1f1;
+    /* Light mode hover effect */
+    border-bottom: 1px solid #2196f3;
+    /* Highlight row on hover */
 }
 
 /* Dark Mode Table */
 .manage-users-container.dark-mode .user-table th {
-    background: #333333; /* Dark mode header background */
-    color: #e0e0e0; /* Dark mode header text */
+    background: #333333;
+    /* Dark mode header background */
+    color: #e0e0e0;
+    /* Dark mode header text */
 }
 
 .manage-users-container.dark-mode .user-table td {
-    background: #2a2a2a; /* Dark mode cell background */
-    color: #cccccc; /* Dark mode cell text */
+    background: #2a2a2a;
+    /* Dark mode cell background */
+    color: #cccccc;
+    /* Dark mode cell text */
 }
 
 .manage-users-container.dark-mode .user-table tr:nth-child(even) td {
-    background: #242424; /* Dark mode alternate row */
+    background: #242424;
+    /* Dark mode alternate row */
 }
 
 .manage-users-container.dark-mode .user-table tr:hover td {
-    background: #3a3a3a; /* Dark mode hover effect */
-    border-bottom: 1px solid #1565c0; /* Highlight row on hover in dark mode */
+    background: #3a3a3a;
+    /* Dark mode hover effect */
+    border-bottom: 1px solid #1565c0;
+    /* Highlight row on hover in dark mode */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+
     .user-table th,
     .user-table td {
-        font-size: 0.9rem; /* Slightly smaller text for smaller screens */
+        font-size: 0.9rem;
+        /* Slightly smaller text for smaller screens */
     }
 }
 

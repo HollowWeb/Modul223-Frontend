@@ -77,7 +77,8 @@
 }
 
 .article-card {
-    position: relative; /* Needed for the absolute positioning of the status */
+    position: relative;
+    /* Needed for the absolute positioning of the status */
     background-color: #ffffff;
     padding: 15px;
     border-radius: 10px;
@@ -193,10 +194,11 @@
     background-color: #444;
     color: #ddd;
 }
+
 .article-status.light {
     background-color: #f0f0f0;
     color: #333;
-  }
+}
 
 /* Request Publish Button */
 .btn-publish-request {
@@ -232,21 +234,21 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .btn-delete:hover {
-    background: #e53935;
-  }
-  
-  .btn-delete.dark-mode {
-    background: #d32f2f;
-  }
-  
-  .btn-delete.dark-mode:hover {
-    background: #c62828;
-  }
+}
 
- /* Manage Tags Modal */
+.btn-delete:hover {
+    background: #e53935;
+}
+
+.btn-delete.dark-mode {
+    background: #d32f2f;
+}
+
+.btn-delete.dark-mode:hover {
+    background: #c62828;
+}
+
+/* Manage Tags Modal */
 .manage-tags-modal-container {
     position: fixed;
     top: 50%;
@@ -254,60 +256,66 @@
     transform: translate(-50%, -50%);
     width: 400px;
     padding: 20px;
-    background: #ffffff; /* Light mode background */
+    background: #ffffff;
+    /* Light mode background */
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     font-family: Arial, sans-serif;
-    color: #333333; /* Light mode text */
-  }
-  
-  .manage-tags-modal-container.dark-mode {
-    background: #2a2a2a; /* Dark mode background */
-    color: #e0e0e0; /* Dark mode text */
+    color: #333333;
+    /* Light mode text */
+}
+
+.manage-tags-modal-container.dark-mode {
+    background: #2a2a2a;
+    /* Dark mode background */
+    color: #e0e0e0;
+    /* Dark mode text */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .manage-tags-modal-title {
+}
+
+.manage-tags-modal-title {
     font-size: 1.5rem;
     margin-bottom: 20px;
     text-align: center;
-  }
-  
-  .manage-tags-modal-title.dark-mode {
-    color: #ffffff; /* Adjust title color for dark mode */
-  }
-  
-  .manage-tags-selection {
+}
+
+.manage-tags-modal-title.dark-mode {
+    color: #ffffff;
+    /* Adjust title color for dark mode */
+}
+
+.manage-tags-selection {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 20px;
-  }
-  
-  .manage-tags-selection label {
+}
+
+.manage-tags-selection label {
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
     font-size: 1rem;
-  }
-  
-  .manage-tags-selection label.dark-mode {
-    color: #e0e0e0; /* Adjust label text color for dark mode */
-  }
-  
-  .manage-tags-selection input[type="checkbox"] {
+}
+
+.manage-tags-selection label.dark-mode {
+    color: #e0e0e0;
+    /* Adjust label text color for dark mode */
+}
+
+.manage-tags-selection input[type="checkbox"] {
     transform: scale(1.2);
     cursor: pointer;
-  }
-  
-  .manage-tags-modal-actions {
+}
+
+.manage-tags-modal-actions {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .btn-save-tags {
+}
+
+.btn-save-tags {
     background: #4caf50;
     color: white;
     border: none;
@@ -315,13 +323,13 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .btn-save-tags:hover {
+}
+
+.btn-save-tags:hover {
     background: #45a049;
-  }
-  
-  .btn-cancel-tags {
+}
+
+.btn-cancel-tags {
     background: #f44336;
     color: white;
     border: none;
@@ -329,19 +337,16 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  .btn-cancel-tags:hover {
+}
+
+.btn-cancel-tags:hover {
     background: #e53935;
-  }
-  
-  .dark-mode .btn-save-tags {
+}
+
+.dark-mode .btn-save-tags {
     background: #357a38;
-  }
-  
-  .dark-mode .btn-cancel-tags {
+}
+
+.dark-mode .btn-cancel-tags {
     background: #b71c1c;
-  }
-  
-  
-  
+}

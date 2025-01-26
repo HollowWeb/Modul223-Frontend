@@ -1,162 +1,162 @@
 /* Main Container */
 .pending-articles-container {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    color: #333;
-    background: #f9f9f9;
-    border-radius: 8px;
-  }
-  
-  .pending-articles-container.dark-mode {
-    background: #1e1e1e;
-    color: #e0e0e0;
-  }
-  
-  /* Title */
-  .pending-articles-container h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  /* Articles Grid */
-  .articles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  
-  /* Article Card */
-  .article-card {
-    background: #ffffff; /* Default light mode background */
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s, color 0.3s;
-  }
-  
-  .article-card.dark-mode {
-    background: #2a2a2a;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
-  }
-  
-  /* Hover Effects */
-  .article-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .article-card.dark-mode:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Article Title */
-  .article-card h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: inherit;
-  }
-  
-  /* Article Excerpt */
-  .article-card p {
-    margin-bottom: 15px;
-    color: #666;
-    font-size: 0.9rem;
-  }
-  
-  .article-card.dark-mode p {
-    color: #ccc;
-  }
-  
-  /* Actions */
-  .article-actions {
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-  
-  /* Action Buttons */
-  .article-actions button {
-    background: #4a90e2;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .article-actions button:hover {
-    background: #357ab8;
-    transform: scale(1.05);
-  }
-  
-  .article-actions button:active {
-    transform: scale(0.95);
-  }
-  
-  .article-actions button.dark-mode {
-    background: #444;
-    color: #fff;
-  }
-  
-  .article-actions button.dark-mode:hover {
-    background: #666;
-  }
-  
-  /* Approve Button */
-  .article-actions button.approve {
-    background: #4caf50;
-  }
-  
-  .article-actions button.approve:hover {
-    background: #45a049;
-  }
-  
-  .article-actions button.approve.dark-mode {
-    background: #2e7d32;
-  }
-  
-  .article-actions button.approve.dark-mode:hover {
-    background: #388e3c;
-  }
-  
-  /* Deny Button */
-  .article-actions button.deny {
-    background: #f44336;
-  }
-  
-  .article-actions button.deny:hover {
-    background: #e53935;
-  }
-  
-  .article-actions button.deny.dark-mode {
-    background: #d32f2f;
-  }
-  
-  .article-actions button.deny.dark-mode:hover {
-    background: #c62828;
-  }
-  
-  /* View Button */
-  .article-actions button.view {
-    background: #ff9800;
-  }
-  
-  .article-actions button.view:hover {
-    background: #fb8c00;
-  }
-  
-  .article-actions button.view.dark-mode {
-    background: #ef6c00;
-  }
-  
-  .article-actions button.view.dark-mode:hover {
-    background: #e65100;
-  }
-  
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #333;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.pending-articles-container.dark-mode {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Title */
+.pending-articles-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Articles Grid */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Article Card */
+.article-card {
+  background: #ffffff;
+  /* Default light mode background */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s, color 0.3s;
+}
+
+.article-card.dark-mode {
+  background: #2a2a2a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+/* Hover Effects */
+.article-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.article-card.dark-mode:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Article Title */
+.article-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+/* Article Excerpt */
+.article-card p {
+  margin-bottom: 15px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.article-card.dark-mode p {
+  color: #ccc;
+}
+
+/* Actions */
+.article-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+/* Action Buttons */
+.article-actions button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.article-actions button:hover {
+  background: #357ab8;
+  transform: scale(1.05);
+}
+
+.article-actions button:active {
+  transform: scale(0.95);
+}
+
+.article-actions button.dark-mode {
+  background: #444;
+  color: #fff;
+}
+
+.article-actions button.dark-mode:hover {
+  background: #666;
+}
+
+/* Approve Button */
+.article-actions button.approve {
+  background: #4caf50;
+}
+
+.article-actions button.approve:hover {
+  background: #45a049;
+}
+
+.article-actions button.approve.dark-mode {
+  background: #2e7d32;
+}
+
+.article-actions button.approve.dark-mode:hover {
+  background: #388e3c;
+}
+
+/* Deny Button */
+.article-actions button.deny {
+  background: #f44336;
+}
+
+.article-actions button.deny:hover {
+  background: #e53935;
+}
+
+.article-actions button.deny.dark-mode {
+  background: #d32f2f;
+}
+
+.article-actions button.deny.dark-mode:hover {
+  background: #c62828;
+}
+
+/* View Button */
+.article-actions button.view {
+  background: #ff9800;
+}
+
+.article-actions button.view:hover {
+  background: #fb8c00;
+}
+
+.article-actions button.view.dark-mode {
+  background: #ef6c00;
+}
+
+.article-actions button.view.dark-mode:hover {
+  background: #e65100;
+}

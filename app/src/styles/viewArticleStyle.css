@@ -1,37 +1,45 @@
 /* Back Button */
 .btn-back {
-    display: inline-block;
-    margin-bottom: 20px;
-    padding: 8px 16px;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffffff; /* Light mode text color */
-    background-color: #4a90e2; /* Light mode background color */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  .btn-back:hover {
-    background-color: #357ab8; /* Darker shade for hover effect */
-    transform: translateY(-2px); /* Subtle lift on hover */
-  }
-  
-  .btn-back:active {
-    transform: translateY(0); /* Reset on click */
-  }
-  
-  .btn-back.dark-mode {
-    background-color: #444444; /* Dark mode background */
-    color: #ffffff; /* Dark mode text */
-  }
-  
-  .btn-back.dark-mode:hover {
-    background-color: #666666; /* Lighter gray for hover in dark mode */
-  }
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  /* Light mode text color */
+  background-color: #4a90e2;
+  /* Light mode background color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
 
- /* Markdown Container */
+.btn-back:hover {
+  background-color: #357ab8;
+  /* Darker shade for hover effect */
+  transform: translateY(-2px);
+  /* Subtle lift on hover */
+}
+
+.btn-back:active {
+  transform: translateY(0);
+  /* Reset on click */
+}
+
+.btn-back.dark-mode {
+  background-color: #444444;
+  /* Dark mode background */
+  color: #ffffff;
+  /* Dark mode text */
+}
+
+.btn-back.dark-mode:hover {
+  background-color: #666666;
+  /* Lighter gray for hover in dark mode */
+}
+
+/* Markdown Container */
 .view-article-container {
   margin: 0 auto;
   padding: 20px;
@@ -50,8 +58,10 @@
 .article-markdown {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  white-space: pre-wrap; /* Preserve line breaks */
-  word-wrap: break-word; /* Handle long words */
+  white-space: pre-wrap;
+  /* Preserve line breaks */
+  word-wrap: break-word;
+  /* Handle long words */
 }
 
 /* Headers */
@@ -98,16 +108,18 @@
   color: inherit;
 }
 
-.article-markdown p + ul,
-.article-markdown p + ol,
-.article-markdown ul + p,
-.article-markdown ol + p {
-  margin-top: -2rem; /* Adjust spacing between lists and adjacent paragraphs */
+.article-markdown p+ul,
+.article-markdown p+ol,
+.article-markdown ul+p,
+.article-markdown ol+p {
+  margin-top: -2rem;
+  /* Adjust spacing between lists and adjacent paragraphs */
   margin-bottom: 0.1rem;
 }
 
 .article-markdown li {
-  margin: 0; /* Reduced space between list items */
+  margin: 0;
+  /* Reduced space between list items */
   line-height: 0.2;
 }
 
@@ -167,7 +179,8 @@
 
 /* Images */
 .article-markdown img {
-  max-width: 100%; /* Ensure images don’t overflow */
+  max-width: 100%;
+  /* Ensure images don’t overflow */
   height: auto;
   margin: 0.5rem 0;
 }
@@ -193,15 +206,19 @@
 
 /* Dark Mode Header */
 .article-markdown.dark-mode th {
-    background: #2c2c2c; /* Dark mode header background */
-    color: #e0e0e0; /* Dark mode text color */
-  }
-  
-  /* Dark Mode Cells */
-  .article-markdown.dark-mode td {
-    border: 1px solid #444444; /* Dark mode border */
-    color: #cccccc; /* Light text for dark mode */
-  }
+  background: #2c2c2c;
+  /* Dark mode header background */
+  color: #e0e0e0;
+  /* Dark mode text color */
+}
+
+/* Dark Mode Cells */
+.article-markdown.dark-mode td {
+  border: 1px solid #444444;
+  /* Dark mode border */
+  color: #cccccc;
+  /* Light text for dark mode */
+}
 
 /* Inline Formatting */
 .article-markdown strong {
@@ -213,10 +230,10 @@
 }
 
 /* Adjust Margins for First/Last Children */
-.article-markdown > *:first-child {
+.article-markdown>*:first-child {
   margin-top: 0;
 }
 
-.article-markdown > *:last-child {
+.article-markdown>*:last-child {
   margin-bottom: 0;
 }

@@ -50,7 +50,7 @@ const ViewArticle = () => {
   }
 
   return (
-    <div className={`view-article-container ${theme === "dark" ? "dark-mode" : ""}`} style={{width: '80%'}}>
+    <div className={`view-article-container ${theme === "dark" ? "dark-mode" : ""}`} style={{ width: '80%' }}>
       <button className={`btn-back ${theme === "dark" ? "dark-mode" : ""}`} onClick={() => navigate(-1)}>
         Back
       </button>
