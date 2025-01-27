@@ -1,0 +1,141 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+
+  .main-content{
+    padding: 0;
+  }
+  
+  /* Home Container */
+  .home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  /* Light and Dark Mode */
+  .home-container.light {
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    color: #333;
+  }
+  
+  .home-container.dark {
+    background: linear-gradient(to right, #1c1c1c, #2c2c2c);
+    color: #f0f0f0;
+  }
+  
+  /* Hero Section */
+  .hero {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  /* Logo Styles */
+  .hero-logo {
+    max-width: 70%; /* Increased the logo size */
+    height: auto;
+    margin: 0 auto;
+    animation: zoomIn 1.5s ease-in-out;
+  }
+  
+  .hero-logo-svg {
+    display: block;
+  }
+  
+  /* Hero Title */
+  .hero-title {
+    font-size: 4rem; /* Larger title */
+    margin: 30px 0 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideInFromLeft 1s ease-in-out;
+  }
+  
+  /* Hero Description */
+  .hero-description {
+    font-size: 1.8rem; /* Slightly larger description */
+    margin-bottom: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+  }
+  
+  /* Buttons */
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .btn {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #495057;
+    transform: scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInFromLeft {
+    from {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  .animated-logo {
+    animation: zoomIn 2s ease;
+  }
+  
+  .animated-text {
+    animation: slideInFromLeft 1.5s ease;
+  }
+  
+  .animated-description {
+    animation: fadeIn 2s ease;
+  }
+  
+  .animated-button {
+    animation: zoomIn 2.5s ease;
+  }
+  

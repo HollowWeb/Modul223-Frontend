@@ -163,3 +163,23 @@ body.dark-mode .dropdown-menu a:hover {
     gap: 1rem;
   }
 }
+
+
+/* Logout Button */
+.nav-right .btn-logout {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-right .btn-logout:hover {
+  color: #f44336; /* Highlight on hover */
+}
+
+/* Adjust spacing for Profile and Logout buttons */
+.nav-right > * {
+  margin-left: 10px;
+}
