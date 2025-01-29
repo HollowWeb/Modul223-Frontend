@@ -1,7 +1,3 @@
-/**
- * MyArticles component for managing the user's articles.
- * Allows users to view a list of their articles, create new ones, and navigate to editing or history pages.
- */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/myArticleStyle.css";
@@ -14,8 +10,8 @@ function MyArticles() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState(null); // Track the selected article
-  const [showTagsModal, setShowTagsModal] = useState(false); // Control the modal visibility
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [showTagsModal, setShowTagsModal] = useState(false);
   const navigate = useNavigate();
   const theme = localStorage.getItem("theme") || "light";
 
@@ -49,7 +45,6 @@ function MyArticles() {
         }
 
         const data = await response.json();
-        console.log("Fetched Articles:", data); // Debugging output
         setArticles(data);
       } catch (err) {
         console.error("Error fetching articles:", err);
@@ -62,6 +57,31 @@ function MyArticles() {
     fetchArticles();
   }, []);
 
+  const handleRequestApproval = async (articleId) => {
+    try {
+      const token = localStorage.getItem("jwtToken");
+      const response = await fetch(`http://localhost:8080/api/articles/${articleId}/request-approval`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to request approval. Status: ${response.status}`);
+      }
+
+      const updatedArticle = await response.json();
+      setArticles((prevArticles) =>
+        prevArticles.map((article) =>
+          article.id === updatedArticle.id ? { ...article, status: updatedArticle.status } : article
+        )
+      );
+    } catch (error) {
+      console.error("Error requesting approval:", error);
+    }
+  };
 
   if (loading) {
     return <div className={`my-articles-container ${theme}`}>Loading articles...</div>;
@@ -107,7 +127,7 @@ function MyArticles() {
                 <div className="article-tags">
                   <strong>Tags:</strong>{" "}
                   {article.tags && article.tags.length > 0
-                    ? article.tags.join(", ") // Directly join the strings in the tags array
+                    ? article.tags.join(", ")
                     : "No tags"}
                 </div>
 
@@ -121,12 +141,20 @@ function MyArticles() {
                   <button
                     className={`btn-manage-tags ${theme}`}
                     onClick={() => {
-                      setSelectedArticle(article); // Set the current article
-                      setShowTagsModal(true); // Open the modal
+                      setSelectedArticle(article);
+                      setShowTagsModal(true);
                     }}
                   >
                     Manage Tags
                   </button>
+                  {(article.status !== "PENDING_APPROVAL" && article.status !== "PUBLISHED")  && (
+                    <button
+                      className={`btn-request-approval ${theme}`}
+                      onClick={() => handleRequestApproval(article.id)}
+                    >
+                      Request Approval
+                    </button>
+                  )}
                 </div>
               </div>
             ))}
