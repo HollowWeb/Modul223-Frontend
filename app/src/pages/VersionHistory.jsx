@@ -1,3 +1,6 @@
+/**
+ * NOT IMPLEMENTED AND NOT USED
+ */
 import React from 'react';
 
 function VersionHistory() {

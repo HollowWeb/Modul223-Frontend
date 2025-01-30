@@ -1,19 +1,23 @@
+/**
+ * Modal that allows for changing user roles
+ */
 import React, { useState } from "react";
 
 const RoleManagementModal = ({ user, roles, onClose, onSave }) => {
-  const [userRoles, setUserRoles] = useState(user.roles || []); // Initialize with user's current roles
-  const theme = localStorage.getItem("theme") || "light"; // Retrieve theme
-
+  // Get the targeted users Roles
+  const [userRoles, setUserRoles] = useState(user.roles || []); 
+  const theme = localStorage.getItem("theme") || "light"; 
+  // set the state of the roles when changes are made
   const toggleRole = (role) => {
     setUserRoles((prevRoles) =>
       prevRoles.includes(role)
-        ? prevRoles.filter((r) => r !== role) // Remove role
-        : [...prevRoles, role] // Add role
+        ? prevRoles.filter((r) => r !== role) 
+        : [...prevRoles, role] 
     );
   };
-
+  // Call the onSave function passed as a prop
   const handleSave = () => {
-    onSave(user.id, userRoles); // Call the onSave function passed as a prop
+    onSave(user.id, userRoles); 
   };
 
   return (

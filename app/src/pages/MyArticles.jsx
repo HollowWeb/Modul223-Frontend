@@ -1,11 +1,15 @@
+/**
+ * Page where all articles of a single user are displayed
+ */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/myArticleStyle.css";
 import { jwtDecode } from "jwt-decode";
-import CreateArticle from "./CreateArticle";
+import CreateArticle from "../components/CreateArticle";
 import TagManagementModal from "../components/TagManagementModal";
 
 function MyArticles() {
+  // INIT STATE
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,17 +18,17 @@ function MyArticles() {
   const [showTagsModal, setShowTagsModal] = useState(false);
   const navigate = useNavigate();
   const theme = localStorage.getItem("theme") || "light";
-
+  // Get all articles of currently loged in user
   useEffect(() => {
     const fetchArticles = async () => {
       try {
         const token = localStorage.getItem("jwtToken");
-
+        // If user is not loged in redirect to login 
         if (!token) {
           navigate("/login");
           return;
         }
-
+        // Get user id from token
         const decodedToken = jwtDecode(token);
         const userId = decodedToken.userId;
 
@@ -56,7 +60,7 @@ function MyArticles() {
 
     fetchArticles();
   }, []);
-
+  // Request approvel from admin for an article
   const handleRequestApproval = async (articleId) => {
     try {
       const token = localStorage.getItem("jwtToken");
@@ -71,7 +75,7 @@ function MyArticles() {
       if (!response.ok) {
         throw new Error(`Failed to request approval. Status: ${response.status}`);
       }
-
+      // Update article state to show new Status
       const updatedArticle = await response.json();
       setArticles((prevArticles) =>
         prevArticles.map((article) =>
@@ -82,7 +86,7 @@ function MyArticles() {
       console.error("Error requesting approval:", error);
     }
   };
-
+  // Show state 
   if (loading) {
     return <div className={`my-articles-container ${theme}`}>Loading articles...</div>;
   }
@@ -147,7 +151,8 @@ function MyArticles() {
                   >
                     Manage Tags
                   </button>
-                  {(article.status !== "PENDING_APPROVAL" && article.status !== "PUBLISHED")  && (
+                  {/* Only show this button whe an article is not already Pending or published */}
+                  {(article.status !== "PENDING_APPROVAL" && article.status !== "PUBLISHED") && (
                     <button
                       className={`btn-request-approval ${theme}`}
                       onClick={() => handleRequestApproval(article.id)}
@@ -161,7 +166,7 @@ function MyArticles() {
           </div>
         )}
       </section>
-
+      {/* Show modul when state is set */}
       {showModal && (
         <CreateArticle
           onClose={() => setShowModal(false)}

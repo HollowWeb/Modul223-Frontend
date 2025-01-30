@@ -1,8 +1,11 @@
+/**
+ * Nav to navigate page
+ */
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "./Navbar.css";
+import "../styles/Navbar.css";
 
-// Import Material Icons
+// Import Icons
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
@@ -14,7 +17,7 @@ function Navbar({ darkMode, toggleDarkMode }) {
   // Check if user is logged in based on token presence in localStorage
   useEffect(() => {
     const token = localStorage.getItem("jwtToken");
-    setIsLoggedIn(!!token); // If token exists, user is logged in
+    setIsLoggedIn(!!token); 
   }, []);
 
   // Toggle dropdown visibility
@@ -30,8 +33,8 @@ function Navbar({ darkMode, toggleDarkMode }) {
   // Handle logout
   const handleLogout = () => {
     localStorage.removeItem("jwtToken"); // Remove token
-    setIsLoggedIn(false); // Update state
-    navigate("/"); // Redirect to home
+    setIsLoggedIn(false); 
+    navigate("/"); 
   };
 
   return (

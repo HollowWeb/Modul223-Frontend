@@ -1,8 +1,12 @@
+/**
+ * Admin page to add new Tag or alter Delete existing ones
+ */
 import React, { useState, useEffect } from "react";
 import { getRolesFromToken } from "../util/auth/jwtDecode";
 import '../styles/TagsCategories.css';
 
 const TagManagement = () => {
+  // INIT STATE
   const [tags, setTags] = useState([]);
   const [newTag, setNewTag] = useState("");
   const [editingTag, setEditingTag] = useState(null);
@@ -12,14 +16,14 @@ const TagManagement = () => {
   const theme = localStorage.getItem("theme") || "light";
   const roles = getRolesFromToken();
 
-      /**
-     * Check if the user has the "ADMIN" role.
-     * If not, redirect them to the "Unauthorized" page.
-     */
-      if (!roles.includes("ADMIN")) {
-        return <Navigate to="/unauthorized" />;
-    }
-
+  /**
+ * Check if the user has the "ADMIN" role.
+ * If not, redirect them to the "Unauthorized" page.
+ */
+  if (!roles.includes("ADMIN")) {
+    return <Navigate to="/unauthorized" />;
+  }
+  // Get all tags from backend 
   useEffect(() => {
     const fetchTags = async () => {
       try {
@@ -46,7 +50,7 @@ const TagManagement = () => {
 
     fetchTags();
   }, []);
-
+  // Create a new tag (Tag names are unique)
   const handleCreateTag = async () => {
     if (!newTag.trim()) {
       alert("Tag name cannot be empty!");
@@ -76,7 +80,7 @@ const TagManagement = () => {
       console.error(err);
     }
   };
-
+  // Update existing tag(s)
   const handleUpdateTag = async (id) => {
     if (!editingTagName.trim()) {
       alert("Tag name cannot be empty!");
@@ -110,7 +114,7 @@ const TagManagement = () => {
     }
   };
 
-
+  // Show state of fetching
   if (loading) {
     return <div>Loading tags...</div>;
   }

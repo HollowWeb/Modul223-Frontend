@@ -1,3 +1,6 @@
+/**
+ * Page where articles can be viewed in full with compiled Markup
+ */
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
@@ -5,13 +8,14 @@ import remarkGfm from "remark-gfm";
 import "../styles/viewArticleStyle.css";
 
 const ViewArticle = () => {
+  // INIT STATE
   const { id } = useParams(); // Get the article ID from the URL
   const [article, setArticle] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const theme = localStorage.getItem("theme") || "light";
-
+  // Get the article that should be viewed by there id 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
@@ -41,6 +45,7 @@ const ViewArticle = () => {
     fetchArticle();
   }, [id]);
 
+  // Show state of fetching 
   if (loading) {
     return <div>Loading article...</div>;
   }

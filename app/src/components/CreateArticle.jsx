@@ -1,19 +1,20 @@
+/**
+ * Modul where users can create there own article
+ */
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
 import "../styles/createArticleStyle.css";
 
 const CreateArticle = ({ onClose, onArticleCreated }) => {
+  // Set default states
   const [newArticle, setNewArticle] = useState({ title: "", content: "" });
   const [previewMode, setPreviewMode] = useState("none"); // "none", "side-by-side", "preview-only"
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleContentChange = (e) => {
-    const content = e.target.value;
-    setNewArticle((prev) => ({ ...prev, content }));
-  };
 
+  // When saving the article make post request to backend
   const handleCreateArticle = async () => {
+    // Prevent save button from beeing pressed more than one before complete 
     setIsSubmitting(true);
     try {
       const BASE_URL = "http://localhost:8080";
@@ -32,7 +33,7 @@ const CreateArticle = ({ onClose, onArticleCreated }) => {
         credentials: "include", // This ensures cookies or credentials are sent
       });
 
-
+      // Throw error since article could not be created and responce is not 200
       if (!response.ok) {
         throw new Error(`Failed to create article. Status: ${response.status}`);
       }
@@ -40,9 +41,11 @@ const CreateArticle = ({ onClose, onArticleCreated }) => {
       const createdArticle = await response.json();
       onArticleCreated(createdArticle);
       onClose();
+      // catch any error that ocure while creating article
     } catch (error) {
       console.error("Error creating article:", error);
     } finally {
+      // Free save button again
       setIsSubmitting(false);
     }
   };
@@ -53,7 +56,7 @@ const CreateArticle = ({ onClose, onArticleCreated }) => {
         <h2>Create New Article</h2>
         <button className="btn-close" onClick={onClose}>✕</button>
       </header>
-
+      {/* Switch between showing Markdown compiled preview */}
       <div className="preview-controls">
         <button
           className={`btn-preview ${previewMode === "none" ? "active" : ""}`}
@@ -74,7 +77,7 @@ const CreateArticle = ({ onClose, onArticleCreated }) => {
           Only Preview
         </button>
       </div>
-
+      {/* Actual conten with or without preview */}
       <div
         className={`modal-body ${previewMode === "side-by-side"
           ? "split-view"
@@ -113,7 +116,7 @@ const CreateArticle = ({ onClose, onArticleCreated }) => {
           </div>
         )}
       </div>
-
+      {/* Save button that triggers post request */}
       <div className="modal-actions">
         <button
           className="btn-save"

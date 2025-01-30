@@ -1,11 +1,14 @@
+/**
+ * Modul to add new Tags to Article
+ */
 import React, { useState, useEffect } from "react";
 
 const ManageTagsModal = ({ article, onClose, onTagsUpdated }) => {
     // Use an empty array as the default if article or article.tags is undefined
-    const [selectedTags, setSelectedTags] = useState(article?.tags || []); // Use the array of strings directly
+    const [selectedTags, setSelectedTags] = useState(article?.tags || []); 
     const [availableTags, setAvailableTags] = useState([]);
     const theme = localStorage.getItem("theme") || "light";
-
+    // Get all tags that are in DB
     useEffect(() => {
         const fetchTags = async () => {
             try {
@@ -30,7 +33,7 @@ const ManageTagsModal = ({ article, onClose, onTagsUpdated }) => {
 
         fetchTags();
     }, []);
-
+    // Change state of tags when changes are made
     const handleTagChange = (tagName) => {
         setSelectedTags((prevTags) =>
             prevTags.includes(tagName)
@@ -39,7 +42,7 @@ const ManageTagsModal = ({ article, onClose, onTagsUpdated }) => {
         );
     };
 
-
+    // Update Article with new Tags 
     const handleSaveTags = async () => {
         try {
             const token = localStorage.getItem("jwtToken");
@@ -55,7 +58,7 @@ const ManageTagsModal = ({ article, onClose, onTagsUpdated }) => {
             if (!response.ok) {
                 throw new Error("Failed to update tags.");
             }
-
+            
             onTagsUpdated(article.id, selectedTags);
             onClose();
         } catch (err) {
@@ -64,9 +67,9 @@ const ManageTagsModal = ({ article, onClose, onTagsUpdated }) => {
         }
     };
 
-
+    // Render nothing if article is undefined
     if (!article) {
-        return null; // Render nothing if article is undefined
+        return null; 
     }
 
 

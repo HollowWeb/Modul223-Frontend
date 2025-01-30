@@ -1,3 +1,6 @@
+/**
+ * General purpose get roles from token 
+ */
 import { jwtDecode } from "jwt-decode";
 
 

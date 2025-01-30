@@ -1,9 +1,13 @@
+/**
+ * Admin page where they can approve of pendign articles 
+ */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getRolesFromToken } from "../util/auth/jwtDecode";
 import "../styles/pendingArticles.css";
 
 const PendingArticles = () => {
+    // INIT STATE
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -17,7 +21,7 @@ const PendingArticles = () => {
     if (!roles.includes("ADMIN")) {
         return <Navigate to="/unauthorized" />;
     }
-
+    // Get articles that are pending 
     useEffect(() => {
         const fetchPendingArticles = async () => {
             try {
@@ -46,7 +50,7 @@ const PendingArticles = () => {
 
         fetchPendingArticles();
     }, []);
-
+    // Set article to Published 
     const handleApproveArticle = async (articleId) => {
         try {
             const token = localStorage.getItem("jwtToken");
@@ -71,7 +75,7 @@ const PendingArticles = () => {
             alert("Failed to approve the article. Please try again.");
         }
     };
-
+    // Deny article 
     const handleDenyArticle = async (articleId) => {
         try {
             const token = localStorage.getItem("jwtToken");
@@ -96,7 +100,7 @@ const PendingArticles = () => {
             alert("Failed to deny the article. Please try again.");
         }
     };
-
+    // Show state of fetching 
     if (loading) {
         return <div>Loading pending articles...</div>;
     }

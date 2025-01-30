@@ -1,8 +1,12 @@
+/**
+ * Dashboard that allows any user logged in or not to view articles 
+ */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/allArticlesStyle.css";
 
 const AllArticles = () => {
+  // INIT State 
   const [articles, setArticles] = useState([]);
   const [tags, setTags] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,7 +15,7 @@ const AllArticles = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const theme = localStorage.getItem("theme") || "light";
-
+  // INIT navigate to redirect users to view articles page
   const navigate = useNavigate();
 
   // Fetch articles and tags
@@ -28,7 +32,7 @@ const AllArticles = () => {
         }
         const articlesData = await articlesResponse.json();
 
-        // Fetch tags
+        // Fetch tags that are used to filter
         const tagsResponse = await fetch("http://localhost:8080/api/tags", {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -79,11 +83,11 @@ const AllArticles = () => {
     });
     setFilteredArticles(filtered);
   };
-
+  // While fetching show Loading 
   if (loading) {
     return <div className={`all-articles-container ${theme}`}>Loading articles...</div>;
   }
-
+  // If Loading throw error show user that articles could not be loaded [Backend Down not working etc...]
   if (error) {
     return (
       <div className={`all-articles-container ${theme}`}>

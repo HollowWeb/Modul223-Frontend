@@ -1,3 +1,6 @@
+/**
+ * Page to edit articles and also see preview 
+ */
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
@@ -12,7 +15,7 @@ const EditArticle = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const theme = localStorage.getItem("theme") || "light";
 
-  // Fetch the article on component mount
+  // Fetch the article 
   useEffect(() => {
     const fetchArticle = async () => {
       try {
@@ -39,13 +42,14 @@ const EditArticle = () => {
 
     fetchArticle();
   }, [id]);
-
+  // Set state to update preview 
   const handleContentChange = (e) => {
     const content = e.target.value;
     setArticle((prev) => ({ ...prev, content }));
   };
-
+  // Save aricle changes 
   const handleUpdateArticle = async () => {
+    // Prevent save button from triggering this again 
     setIsSubmitting(true);
     try {
       const token = localStorage.getItem("jwtToken");
@@ -65,8 +69,8 @@ const EditArticle = () => {
       if (!response.ok) {
         throw new Error(`Failed to update article. Status: ${response.status}`);
       }
-
-      navigate("/my-articles"); // Go back to the MyArticles page
+      // After save navigate back
+      navigate("/my-articles");
     } catch (error) {
       console.error("Error updating article:", error);
     } finally {
@@ -76,39 +80,42 @@ const EditArticle = () => {
 
   return (
     <div className={`edit-article-page ${theme === "dark" ? "dark-mode" : ""}`}>
-    <div className="edit-header">
-      <button className="btn-back" onClick={() => navigate("/my-articles")}>
-        Back
-      </button>
-      <div className="preview-controls">
-        <button
-          className={`btn-preview ${previewMode === "none" ? "active" : ""}`}
-          onClick={() => setPreviewMode("none")}
-        >
-          Edit Only
+      <div className="edit-header">
+        {/* Generic Back button to go back */}
+        <button className="btn-back" onClick={() => navigate("/my-articles")}>
+          Back
         </button>
-        <button
-          className={`btn-preview ${previewMode === "side-by-side" ? "active" : ""}`}
-          onClick={() => setPreviewMode("side-by-side")}
-        >
-          Side-by-Side
-        </button>
-        <button
-          className={`btn-preview ${previewMode === "preview-only" ? "active" : ""}`}
-          onClick={() => setPreviewMode("preview-only")}
-        >
-          Preview Only
-        </button>
+        {/* Chnage preview state buttons */}
+        <div className="preview-controls">
+          <button
+            className={`btn-preview ${previewMode === "none" ? "active" : ""}`}
+            onClick={() => setPreviewMode("none")}
+          >
+            Edit Only
+          </button>
+          <button
+            className={`btn-preview ${previewMode === "side-by-side" ? "active" : ""}`}
+            onClick={() => setPreviewMode("side-by-side")}
+          >
+            Side-by-Side
+          </button>
+          <button
+            className={`btn-preview ${previewMode === "preview-only" ? "active" : ""}`}
+            onClick={() => setPreviewMode("preview-only")}
+          >
+            Preview Only
+          </button>
+        </div>
+        {/* Edit section + Preview */}
       </div>
-    </div>
 
       <main
         className={`edit-article-body ${previewMode === "side-by-side"
           ? "split-view"
           : previewMode === "preview-only"
-          ? "full-width"
-          : ""
-        }`}
+            ? "full-width"
+            : ""
+          }`}
       >
         {(previewMode === "none" || previewMode === "side-by-side") && (
           <section className="edit-section">
@@ -138,19 +145,19 @@ const EditArticle = () => {
           </section>
         )}
       </main>
-
+      {/* Footer where save and cancel button are located */}
       <footer className={`edit-footer ${theme === "dark" ? "dark-mode" : ""}`}>
-  <button
-    className="btn-save"
-    onClick={handleUpdateArticle}
-    disabled={isSubmitting}
-  >
-    {isSubmitting ? "Saving..." : "Save"}
-  </button>
-  <button className="btn-cancel" onClick={() => navigate("/my-articles")}>
-    Cancel
-  </button>
-</footer>
+        <button
+          className="btn-save"
+          onClick={handleUpdateArticle}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Saving..." : "Save"}
+        </button>
+        <button className="btn-cancel" onClick={() => navigate("/my-articles")}>
+          Cancel
+        </button>
+      </footer>
     </div>
   );
 };

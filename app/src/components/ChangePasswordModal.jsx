@@ -1,3 +1,6 @@
+/**
+ * Modal to change password
+ */
 import React, { useState } from "react";
 
 const ChangePasswordModal = ({ userId, onClose, onSubmit }) => {

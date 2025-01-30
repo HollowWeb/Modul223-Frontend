@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "../styles/profileStyle.css";
 
 const Profile = () => {
+  // INIT STATE
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -19,6 +20,7 @@ const Profile = () => {
   const [showPasswordChange, setShowPasswordChange] = useState(false);
   const theme = localStorage.getItem("theme") || "light";
 
+  // Get user current user
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
@@ -40,7 +42,7 @@ const Profile = () => {
         if (!response.ok) {
           throw new Error(`Failed to fetch user details. Status: ${response.status}`);
         }
-
+        // Set state of user 
         const userData = await response.json();
         setUser(userData);
         setUpdatedDetails(userData);
@@ -54,6 +56,7 @@ const Profile = () => {
     fetchUserDetails();
   }, [navigate]);
 
+  // Send PUT to update changes of UserName Email
   const handleUpdateDetails = async () => {
     try {
       const token = localStorage.getItem("jwtToken");
@@ -79,7 +82,8 @@ const Profile = () => {
       alert("Error updating profile. Please try again.");
     }
   };
-
+  // Send PUT to update password. need old password to change it (CHECK HAPPENS IN BACKEND) 
+  // !! WHEN USER IS ADMIN NO CHECK HAPPENS (BACKEND!!
   const handleChangePassword = async () => {
     if (newPassword !== confirmPassword) {
       alert("Passwords do not match.");
@@ -104,7 +108,7 @@ const Profile = () => {
       if (!response.ok) {
         throw new Error(`Failed to change password. Status: ${response.status}`);
       }
-  
+      // Reset state
       alert("Password changed successfully.");
       setOldPassword(""); // Reset the old password input
       setNewPassword(""); // Reset the new password input
@@ -113,7 +117,7 @@ const Profile = () => {
       alert("Error changing password. Please try again.");
     }
   };
-
+  // Show status of fetching user data
   if (loading) {
     return <div className={`profile-container ${theme}`}>Loading...</div>;
   }
@@ -190,7 +194,7 @@ const Profile = () => {
     <span>Change Password</span>
     <span className="arrow-icon">{showPasswordChange ? "▲" : "▼"}</span>
   </button>
-
+  {/* Seperate window that apperes to change password */}
   {showPasswordChange && (
     <div className="password-change">
       <h2>Change Password</h2>

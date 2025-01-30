@@ -7,7 +7,7 @@ import '../styles/homeStyle.css'
 
 function Home() {
   const theme = localStorage.getItem("theme") || "light";
-
+  // Two different version of svg logo for different themes 
   const lightLogo = (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" className="hero-logo-svg">
       <rect width="500" height="200" fill="transparent" />
@@ -31,7 +31,7 @@ function Home() {
       <circle cx="200" cy="65" r="6" fill="yellow" />
     </svg>
   );
-
+  // A lot of css used here for animations etc
   return (
     <div className={`home-container ${theme}`}>
       

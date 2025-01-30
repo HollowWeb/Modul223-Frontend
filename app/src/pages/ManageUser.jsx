@@ -11,6 +11,7 @@ import RoleManagementModal from "../components/RoleManagementModal";
 
 
 const ManageUsers = () => {
+  // INIT states
   const [users, setUsers] = useState([]);
   const [roles, setRoles] = useState([]); // List of available roles
   const [selectedUserForRoles, setSelectedUserForRoles] = useState(null); // User for managing roles
@@ -20,14 +21,14 @@ const ManageUsers = () => {
   const [error, setError] = useState(null);
   const theme = localStorage.getItem("theme") || "light"; // Retrieve theme
 
-
+  // Check if current user has Admin role else redirect to unauthorized
   const UserRoles = getRolesFromToken();
   if (!UserRoles.includes("ADMIN")) {
     return <Navigate to="/unauthorized" />;
   }
 
   
-
+  // Get all users 
   useEffect(() => {
     const fetchUsersAndRoles = async () => {
       try {
@@ -48,7 +49,7 @@ const ManageUsers = () => {
         const usersData = await usersResponse.json();
         setUsers(usersData);
   
-        // Fetch Roles
+        // Fetch Roles to show the other option avalible 
         const rolesResponse = await fetch("http://localhost:8080/api/roles", {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -74,7 +75,7 @@ const ManageUsers = () => {
     fetchUsersAndRoles();
   }, []);
   
-
+  // Update user with new password old is not required since only admins can use this page and they have the right to chnage password without knowing the old one
   const handleChangePassword = async () => {
     if (!newPassword) {
       alert("Password cannot be empty!");
@@ -105,11 +106,13 @@ const ManageUsers = () => {
       console.error(err);
     }
   };
-
+  // "Delete" User  
   const handleDeleteUser = async (userId) => {
+    // Ask for before sending request
     const confirmDelete = window.confirm("Are you sure you want to delete this user?");
     if (!confirmDelete) return;
 
+    
     try {
       const token = localStorage.getItem("jwtToken");
 
@@ -133,11 +136,11 @@ const ManageUsers = () => {
       console.error(err);
     }
   };
-
+  // Update user after save button press
   const handleUpdateRoles = async (userId, updatedRoles) => {
     try {
       const token = localStorage.getItem("jwtToken");
-
+      // Prep payload
       const payload = {
         username: users.find((user) => user.id === userId).username,
         email: users.find((user) => user.id === userId).email,
@@ -172,7 +175,7 @@ const ManageUsers = () => {
       console.error(err);
     }
   };
-
+  // Show state 
   if (loading) {
     return <div>Loading users...</div>;
   }

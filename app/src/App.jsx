@@ -16,7 +16,7 @@ import Profile from './pages/Profile';
 import UserLogin from './pages/UserLogin';
 import UserRegistration from './pages/UserRegistration';
 import { Routes, Route } from 'react-router-dom';
-import Unauthorized from './pages/Unauthorized';
+import Unauthorized from './components/Unauthorized';
 import EditArticle from './pages/EditArticle'
 import PendingArticles from './pages/PendingArticles';
 /**
@@ -27,7 +27,7 @@ function App() {
   const [darkMode, setDarkMode] = useState(
     () => localStorage.getItem("theme") === "dark"
   );
-
+  // add class dark mode
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add("dark-mode");
