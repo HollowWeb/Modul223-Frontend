@@ -1,0 +1,239 @@
+/* Back Button */
+.btn-back {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ffffff;
+  /* Light mode text color */
+  background-color: #4a90e2;
+  /* Light mode background color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: #357ab8;
+  /* Darker shade for hover effect */
+  transform: translateY(-2px);
+  /* Subtle lift on hover */
+}
+
+.btn-back:active {
+  transform: translateY(0);
+  /* Reset on click */
+}
+
+.btn-back.dark-mode {
+  background-color: #444444;
+  /* Dark mode background */
+  color: #ffffff;
+  /* Dark mode text */
+}
+
+.btn-back.dark-mode:hover {
+  background-color: #666666;
+  /* Lighter gray for hover in dark mode */
+}
+
+/* Markdown Container */
+.view-article-container {
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  color: #333333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.view-article-container.dark-mode {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+/* Markdown Content */
+.article-markdown {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  /* Preserve line breaks */
+  word-wrap: break-word;
+  /* Handle long words */
+}
+
+/* Headers */
+.article-markdown h1 {
+  font-size: 2rem;
+  margin: 1rem 0 0.5rem 0;
+  border-bottom: 2px solid #cccccc;
+  padding-bottom: 0.3rem;
+}
+
+.article-markdown h1.dark-mode {
+  border-bottom: 2px solid #444444;
+}
+
+.article-markdown h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.5rem 0;
+}
+
+.article-markdown h3 {
+  font-size: 1.25rem;
+  margin: 0.75rem 0 0.5rem 0;
+}
+
+.article-markdown h1,
+.article-markdown h2,
+.article-markdown h3 {
+  font-weight: bold;
+  color: inherit;
+}
+
+/* Paragraphs */
+.article-markdown p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: inherit;
+}
+
+/* Lists */
+.article-markdown ul,
+.article-markdown ol {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: inherit;
+}
+
+.article-markdown p+ul,
+.article-markdown p+ol,
+.article-markdown ul+p,
+.article-markdown ol+p {
+  margin-top: -2rem;
+  /* Adjust spacing between lists and adjacent paragraphs */
+  margin-bottom: 0.1rem;
+}
+
+.article-markdown li {
+  margin: 0;
+  /* Reduced space between list items */
+  line-height: 0.2;
+}
+
+/* Blockquotes */
+.article-markdown blockquote {
+  border-left: 4px solid #cccccc;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  font-style: italic;
+  color: #aaaaaa;
+}
+
+.article-markdown blockquote.dark-mode {
+  border-left: 4px solid #444444;
+  color: #cccccc;
+}
+
+/* Preformatted Code Blocks */
+.article-markdown pre {
+  background: #282c34;
+  color: #ffffff;
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+
+/* Inline Code */
+.article-markdown code {
+  background: #333333;
+  color: #ffcb6b;
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+}
+
+/* Horizontal Rules */
+.article-markdown hr {
+  border: none;
+  border-top: 1px solid #cccccc;
+  margin: 1rem 0;
+}
+
+.article-markdown hr.dark-mode {
+  border-top: 1px solid #444444;
+}
+
+/* Links */
+.article-markdown a {
+  color: #61dafb;
+  text-decoration: underline;
+}
+
+.article-markdown a:hover {
+  text-decoration: none;
+}
+
+/* Images */
+.article-markdown img {
+  max-width: 100%;
+  /* Ensure images don’t overflow */
+  height: auto;
+  margin: 0.5rem 0;
+}
+
+/* Tables */
+.article-markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.article-markdown th,
+.article-markdown td {
+  border: 1px solid #cccccc;
+  padding: 8px;
+  text-align: left;
+}
+
+.article-markdown th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+/* Dark Mode Header */
+.article-markdown.dark-mode th {
+  background: #2c2c2c;
+  /* Dark mode header background */
+  color: #e0e0e0;
+  /* Dark mode text color */
+}
+
+/* Dark Mode Cells */
+.article-markdown.dark-mode td {
+  border: 1px solid #444444;
+  /* Dark mode border */
+  color: #cccccc;
+  /* Light text for dark mode */
+}
+
+/* Inline Formatting */
+.article-markdown strong {
+  font-weight: bold;
+}
+
+.article-markdown em {
+  font-style: italic;
+}
+
+/* Adjust Margins for First/Last Children */
+.article-markdown>*:first-child {
+  margin-top: 0;
+}
+
+.article-markdown>*:last-child {
+  margin-bottom: 0;
+}

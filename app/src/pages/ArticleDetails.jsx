@@ -1,3 +1,6 @@
+/**
+ * NOT IMPLEMENTED
+ */
 import React from 'react';
 
 function ArticleDetails() {

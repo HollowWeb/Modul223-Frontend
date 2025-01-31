@@ -1,60 +1,229 @@
-import React, { useState } from 'react';
+/**
+ * Profile component for managing user account information.
+ * Allows users to view and update their username, email, and password.
+ */
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/profileStyle.css";
 
-function Profile() {
-  // Placeholder states for user information
-  const [username, setUsername] = useState('JohnDoe');
-  const [email, setEmail] = useState('johndoe@example.com');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+const Profile = () => {
+  // INIT STATE
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [editing, setEditing] = useState(false);
+  const [updatedDetails, setUpdatedDetails] = useState({});
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
+  const navigate = useNavigate();
+  const [showPasswordChange, setShowPasswordChange] = useState(false);
+  const theme = localStorage.getItem("theme") || "light";
 
-  const handleSave = () => {
-    // Placeholder logic for saving profile changes
-    alert('Profile changes saved!');
+  // Get user current user
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const token = localStorage.getItem("jwtToken");
+
+        if (!token) {
+          navigate("/login");
+          return;
+        }
+
+        const response = await fetch("http://localhost:8080/api/users/me", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch user details. Status: ${response.status}`);
+        }
+        // Set state of user 
+        const userData = await response.json();
+        setUser(userData);
+        setUpdatedDetails(userData);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserDetails();
+  }, [navigate]);
+
+  // Send PUT to update changes of UserName Email
+  const handleUpdateDetails = async () => {
+    try {
+      const token = localStorage.getItem("jwtToken");
+
+      const response = await fetch("http://localhost:8080/api/users/settings", {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedDetails),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Failed to update user details. Status: ${response.status}`);
+      }
+
+      const updatedUser = await response.json();
+      setUser(updatedUser);
+      setEditing(false);
+      alert("Profile updated successfully.");
+    } catch (err) {
+      alert("Error updating profile. Please try again.");
+    }
   };
+  // Send PUT to update password. need old password to change it (CHECK HAPPENS IN BACKEND) 
+  // !! WHEN USER IS ADMIN NO CHECK HAPPENS (BACKEND!!
+  const handleChangePassword = async () => {
+    if (newPassword !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+  
+    try {
+      const token = localStorage.getItem("jwtToken");
+  
+      const response = await fetch(`http://localhost:8080/api/users/${user.id}/change-password`, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+          oldPassword, 
+          newPassword 
+        }),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Failed to change password. Status: ${response.status}`);
+      }
+      // Reset state
+      alert("Password changed successfully.");
+      setOldPassword(""); // Reset the old password input
+      setNewPassword(""); // Reset the new password input
+      setConfirmPassword(""); // Reset the confirm password input
+    } catch (err) {
+      alert("Error changing password. Please try again.");
+    }
+  };
+  // Show status of fetching user data
+  if (loading) {
+    return <div className={`profile-container ${theme}`}>Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className={`profile-container ${theme}`}>
+        <p className="error-message">Error: {error}</p>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <h1>User Profile</h1>
-      <p>Manage your account information here.</p>
-      <form>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+    <div className={`profile-container ${theme}`}>
+      <h1 className="profile-title">My Profile</h1>
+
+      {/* Profile Details */}
+      <div className="profile-details">
+        <div className="profile-field">
+          <label>Username</label>
+          {editing ? (
+            <input
+              type="text"
+              value={updatedDetails.username || ""}
+              onChange={(e) =>
+                setUpdatedDetails({ ...updatedDetails, username: e.target.value })
+              }
+            />
+          ) : (
+            <p>{user.username}</p>
+          )}
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+
+        <div className="profile-field">
+          <label>Email</label>
+          {editing ? (
+            <input
+              type="email"
+              value={updatedDetails.email || ""}
+              onChange={(e) =>
+                setUpdatedDetails({ ...updatedDetails, email: e.target.value })
+              }
+            />
+          ) : (
+            <p>{user.email}</p>
+          )}
         </div>
-        <div>
-          <label>New Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type="button" onClick={handleSave}>
-          Save Changes
-        </button>
-      </form>
+      </div>
+
+      {/* Actions */}
+      <div className="profile-actions">
+        {editing ? (
+          <>
+            <button className="btn-save" onClick={handleUpdateDetails}>
+              Save Changes
+            </button>
+            <button className="btn-cancel" onClick={() => setEditing(false)}>
+              Cancel
+            </button>
+          </>
+        ) : (
+          <button className="btn-edit" onClick={() => setEditing(true)}>
+            Edit Profile
+          </button>
+        )}
+      </div>
+
+      {/* Password Change */}
+      <div className="password-change-dropdown">
+  <button
+    className="btn-toggle-password"
+    onClick={() => setShowPasswordChange((prev) => !prev)}
+  >
+    <span>Change Password</span>
+    <span className="arrow-icon">{showPasswordChange ? "▲" : "▼"}</span>
+  </button>
+  {/* Seperate window that apperes to change password */}
+  {showPasswordChange && (
+    <div className="password-change">
+      <h2>Change Password</h2>
+      <input
+        type="password"
+        placeholder="Old Password"
+        value={oldPassword}
+        onChange={(e) => setOldPassword(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="New Password"
+        value={newPassword}
+        onChange={(e) => setNewPassword(e.target.value)}
+      />
+      <input
+        type="password"
+        placeholder="Confirm New Password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+      />
+      <button className="btn-change-password" onClick={handleChangePassword}>
+        Change Password
+      </button>
+    </div>
+  )}
+</div>
     </div>
   );
-}
+};
 
 export default Profile;
